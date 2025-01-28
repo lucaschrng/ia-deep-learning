@@ -1,0 +1,12 @@
+#drop-zone {
+    transition: all 0.3s ease;
+}
+
+#drop-zone.dragover {
+    background-color: rgba(59, 130, 246, 0.1);
+    border-color: rgb(59, 130, 246);
+}
+
+.probability-bar {
+    transition: width 0.6s ease;
+}

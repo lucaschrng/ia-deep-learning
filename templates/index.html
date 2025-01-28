@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Classification</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold text-center mb-8">Image Classification</h1>
+        
+        <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden p-6">
+            <div class="mb-6">
+                <div class="relative border-2 border-dashed border-gray-300 rounded-lg p-6 text-center" id="drop-zone">
+                    <input type="file" id="file-input" accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+                    <div class="space-y-2">
+                        <div class="text-gray-600">
+                            <span class="font-medium">Drop an image here</span> or click to upload
+                        </div>
+                        <div id="preview" class="mt-4 hidden">
+                            <img id="preview-image" src="" alt="Preview" class="max-w-full h-auto mx-auto rounded-lg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button id="predict-btn" class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                Predict
+            </button>
+
+            <div id="result" class="mt-6 hidden">
+                <h2 class="text-xl font-semibold mb-4">Prediction Results</h2>
+                <div class="space-y-4">
+                    <div class="p-4 bg-gray-50 rounded-lg">
+                        <div class="font-medium text-gray-700">Predicted Class:</div>
+                        <div id="predicted-class" class="text-2xl font-bold text-blue-600"></div>
+                    </div>
+                    <div class="p-4 bg-gray-50 rounded-lg">
+                        <div class="font-medium text-gray-700 mb-2">Confidence:</div>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5">
+                            <div id="confidence-bar" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
+                        </div>
+                        <div id="confidence-value" class="mt-1 text-sm text-gray-600"></div>
+                    </div>
+                    <div class="p-4 bg-gray-50 rounded-lg">
+                        <div class="font-medium text-gray-700 mb-2">Class Probabilities:</div>
+                        <div id="probabilities" class="space-y-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
